@@ -1,0 +1,40 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    user_provider_service:
+        class: AppBundle\Service\Security\UserProviderService
+        arguments: [ "@doctrine.orm.entity_manager" ]
+
+    oauth_storage_service:
+        class: AppBundle\Service\Security\OAuthStorageService
+        arguments:
+            - "@fos_oauth_server.client_manager.default"
+            - "@fos_oauth_server.access_token_manager"
+            - "@fos_oauth_server.refresh_token_manager"
+            - "@fos_oauth_server.auth_code_manager.default"
+            - "@user_provider_service"
+            - "@security.encoder_factory"
+
+    id_generator_service:
+        class: AppBundle\Security\IdGenerator
+
+#    AppBundle\:
+#        resource: '../../src/AppBundle/*'
+#        # you can exclude directories or files
+#        # but if a service is unused, it's removed anyway
+#        exclude: '../../src/AppBundle/{Entity,Repository,Tests}'
+#
+#    # controllers are imported separately to make sure they're public
+#    # and have a tag that allows actions to type-hint services
+#    AppBundle\Controller\:
+#        resource: '../../src/AppBundle/Controller'
+#        public: true
+#        tags: ['controller.service_arguments']
+#
+#    # add more services, or override services that need manual wiring
+#    # AppBundle\Service\ExampleService:
+#    #     arguments:
+#    #         $someArgument: 'some_value'
