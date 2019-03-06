@@ -1,6 +1,6 @@
 version: '3'
 services:
-    php:
+    php-fpm:
         build: docker/php-fpm
         expose:
             - '9000'
@@ -13,8 +13,9 @@ services:
         build: docker/nginx
         ports:
             - '${APP_HTTP_PORT}:80'
+            - '${APP_HTTPS_PORT}:443'
         depends_on:
-            - php
+            - php-fpm
         volumes:
             - ./:/var/www/html:rw
 
