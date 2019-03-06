@@ -1,0 +1,35 @@
+version: '3'
+services:
+    php:
+        build: docker/php-fpm
+        expose:
+            - '9000'
+        depends_on:
+            - postgres
+        volumes:
+            - ./:/var/www/html:rw
+
+    nginx:
+        build: docker/nginx
+        ports:
+            - '${APP_HTTP_PORT}:80'
+        depends_on:
+            - php
+        volumes:
+            - ./:/var/www/html:rw
+
+    postgres:
+        image: postgres:10.0-alpine
+        environment:
+            - POSTGRES_USER=${DATABASE_USER}
+            - POSTGRES_PASSWORD=${DATABASE_PASSWORD}
+            - POSTGRES_DB=${DATABASE_NAME}
+        ports:
+            - '${DATABASE_PORT}:5432'
+
+    adminer:
+        image: adminer:4.7.1-standalone
+        ports:
+            - '8083:80'
+        environment:
+            - 'ADMINER_DESIGN=pappu687'
