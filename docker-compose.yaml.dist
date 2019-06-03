@@ -1,6 +1,8 @@
 version: '3'
+
 services:
     php-fpm:
+        container_name: backend-test_php-fpm
         build: docker/php-fpm
         expose:
             - '9000'
@@ -10,16 +12,18 @@ services:
             - ./:/var/www/html:rw
 
     nginx:
+        container_name: backend-test_nginx
         build: docker/nginx
         ports:
             - '${APP_HTTP_PORT}:80'
             - '${APP_HTTPS_PORT}:443'
-        depends_on:
+        links:
             - php-fpm
         volumes:
             - ./:/var/www/html:rw
 
     postgres:
+        container_name: backend-test_postgres
         image: postgres:10.0-alpine
         environment:
             - POSTGRES_USER=${DATABASE_USER}
@@ -29,6 +33,7 @@ services:
             - '${DATABASE_PORT}:5432'
 
     adminer:
+        container_name: backend-test_adminer
         image: adminer:4.7.1-standalone
         restart: always
         ports:

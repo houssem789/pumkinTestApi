@@ -1,8 +1,8 @@
 CONSOLE=php bin/console
-CONTAINER=nginx
+CONTAINER=php-fpm
 CONTAINER_BDD=postgres
-EXEC_COMMAND = docker-compose exec $(CONTAINER)
-EXEC_COMMAND_BDD = docker-compose exec $(CONTAINER_BDD)
+EXEC_COMMAND=docker-compose exec $(CONTAINER)
+EXEC_COMMAND_BDD=docker-compose exec $(CONTAINER_BDD)
 
 up:
 	docker-compose up -d

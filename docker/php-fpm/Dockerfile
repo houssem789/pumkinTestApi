@@ -45,6 +45,10 @@ ADD config/php-fpm.conf /etc/php7/php-fpm.conf
 
 RUN ln -snf /usr/share/zoneinfo/Europe/Lisbon /etc/localtime
 
+# Add Composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+RUN composer --version
+
 WORKDIR /var/www/html
 
 EXPOSE 9000
