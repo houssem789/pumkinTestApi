@@ -1,0 +1,46 @@
+<p>
+    Une librairie en ligne souhaite mettre en ligne une application mobile pour ses utilisateurs. <br />
+    Elle souhaite donc avoir une API REST exposant son contenu aux applications.<br />
+    <br />
+    Les administrateurs pourront :
+</p>
+<ul>
+    <li>Créer, éditer, supprimer et lister des catégories. Une catégorie est composée d'un nom et d'un tag.</li>
+    <li>Créer, éditer, supprimer et lister des livres. Un livre est composé d'un titre, d'un synopsis, d'une description,
+        d'un auteur, d'un prix, d'une note de popularité notée sur cinq, et d'une ou plusieurs catégories.</li>
+</ul>
+
+<p>
+    Les applications mobiles devront proposer les deux vues suivantes :
+</p>
+<ul>
+    <li>Liste des livres disponibles, affichant leur titre, leur auteur, leur prix et leur popularité.</li>
+    <li>Il sera possible de trier les livres par ordre alphabétique, prix et/ou note de popularité.</li>
+    <li>Il sera possible de filtrer les livres par catégorie.</li>
+    <li>Vue de détails d'un livre, affichant toutes les informations d'un livre ainsi qu'une liste de commentaires triée par date</li>
+    <li>Il est également possible pour un lecteur de commenter sur le livre.</li>
+</ul>
+
+<p>
+    L'exercice consiste à écrire les contrats de service de cette API que les applications mobiles pourront utiliser pour
+    commencer leurs développements en attendant d'avoir une API disponible, puis d'implémenter cette API.
+</p>
+<ul>
+    <li>Écrivez les contrats de service de l'API dans le dossier <span class="code">doc/api-contracts</span> de ce projet</li>
+    <li>Implémentez les endpoints décrits dans les contrats de service</li>
+
+</ul>
+<span class="font-bold"><i class="fa fa-info-circle"></i> En dehors de Symfony, vous êtes libres des choix techniques pour écrire les contrats de service et implémenter l'API.</span>
+</p>
+
+<p class="font-bold"><u>Note</u>:</p>
+<ul>
+    <li>Il n'est pas nécessaire de gérer la partie sécurité de l'API : il n'est pas nécessaire de vérifier que l'utilisateur de
+        l'API est un administrateur ou un lecteur (ni même de vérifier qu'un utilisateur est connecté)</li>
+    <li>Ne vous compliquez pas trop la tâche : pour les auteurs des livres et les utilisateurs liés aux commentaires, une simple
+        chaîne de caractères (nom / prénom, pseudo, email, etc...) suffit</li>
+    <li>Si vous avez peur de manquer de temps, concentrez-vous sur les contrats de service et l'implémentation de quelques
+        endpoints. L'intérêt n'est pas tant d'avoir une API terminée correspondant au cahier des charges, que de voir votre
+        façon de travailler. (Notez donc que plus les endpoints choisis seront complexes et/ou diversifiés, plus ce sera intéressant
+        pour nous !)</li>
+</ul>
