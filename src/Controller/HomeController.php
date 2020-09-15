@@ -9,9 +9,6 @@ use Symfony\Component\Routing\Annotation\Route;
 
 final class HomeController extends AbstractController
 {
-    /**
-     * @Route("/sss", name="home_page")
-     */
     public function __invoke()
     {
         $hue = random_int(0, 360);
