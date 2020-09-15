@@ -1,0 +1,12 @@
+#!/bin/bash
+shopt -s globstar
+
+if [ -n "${WWW_DATA_GID}" ]; then
+    groupmod --gid "${WWW_DATA_GID}" --non-unique www-data
+fi
+
+if [ -n "${WWW_DATA_UID}" ]; then
+    usermod --non-unique --uid "${WWW_DATA_UID}" www-data
+fi
+
+mkdir -p /run/php

@@ -1,0 +1,28 @@
+<p>
+    Écrivez une fonction qui fournit une fonction de changement de répertoire (cd) pour un système de fichiers abstrait.
+    <br />
+    <br />
+    <span class="font-bold"><i class="fa fa-warning"></i> Il est ici question d'un simulateur de changement de répertoire et non question de parcourir l'arborescence du système directement.</span>
+</p>
+<p>
+    <i class="fa fa-info-circle"></i> Le plus important dans ce test est l'implémentation de l'algorithme.
+</p>
+<p class="font-bold"><u>Exemple</u>:</p>
+<pre>
+$path = new Path('/a/b/c/d');
+echo $path->cd('../x')->current(); // /a/b/c/x</pre>
+<p class="font-bold"><u>Note</u>:</p>
+<ul>
+    <li>La classe se trouve <span class="code">src/Path/Path.php</span></li>
+    <li>La racine du chemin est <span class="code">/</span></li>
+    <li>Le séparateur est <span class="code">/</span></li>
+    <li>Le répertoire parent est accessible depuis  <span class="code">..</span></li>
+    <li>Les noms de répertoire se composent uniquement de lettres alphabetique (A-Z et a-z)</li>
+</ul>
+<p class="font-bold"><u>Réussite</u>:</p>
+<p>
+    Lancer la commande <span class="code">make unit-testing tag=test-path</span>, si le test est vert, vous avez réussi.
+</p>
+<p class="font-bold">
+    <i class="fa fa-info-circle"></i> Si vous ne parvenez pas à rendre le test vert, ce n'est pas grave.
+</p>

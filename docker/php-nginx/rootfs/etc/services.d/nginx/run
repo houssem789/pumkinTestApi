@@ -1,0 +1,6 @@
+#!/bin/bash
+set -e -u
+
+s6-svwait /run/s6/services/php-fpm
+
+exec s6-setuidgid root nginx -g 'daemon off;'
