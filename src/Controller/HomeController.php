@@ -9,11 +9,26 @@ use Symfony\Component\Routing\Annotation\Route;
 
 final class HomeController extends AbstractController
 {
+    /**
+     * @Route("/exo1", name="exercice_1")
+     */
+    public function exerciceOne()
+    {
+
+        dump("exo1");
+        die;
+        // ...
+    }
+
     public function __invoke()
     {
         $hue = random_int(0, 360);
-        $darkColor = static function (float $alpha = 1) use ($hue) { return "hsla($hue, 20%, 45%, $alpha)"; };
-        $lightColor = static function (float $alpha = 1) use ($hue) { return "hsla($hue, 20%, 95%, $alpha)"; };
+        $darkColor = static function (float $alpha = 1) use ($hue) {
+            return "hsla($hue, 20%, 45%, $alpha)";
+        };
+        $lightColor = static function (float $alpha = 1) use ($hue) {
+            return "hsla($hue, 20%, 95%, $alpha)";
+        };
 
         return $this->render('instructions.html.twig', [
             'hue' => $hue,
