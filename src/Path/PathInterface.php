@@ -6,7 +6,7 @@ namespace App\Path;
 
 interface PathInterface
 {
-    public static function from(string $path): PathInterface;
-    public function cd(string $newPath): PathInterface;
-    public function current(): string;
+    //public static function from(string $path): PathInterface;
+    //public function cd(string $newPath): PathInterface;
+    //public function current(): string;
 }

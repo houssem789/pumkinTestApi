@@ -1,29 +1,16 @@
 <?php
 
-namespace App\Controller;
+declare(strict_types=1);
 
+namespace App\FizzBuzz;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Routing\Annotation\Route;
-
-use App\FizzBuzz\FizzBuzz;
-
-
-
-
-class FizzBuzzController extends AbstractController
+final class FizzBuzz
 {
 
-    public function __invoke(FizzBuzz $fizzBuzz)
+    public function testMethod()
     {
-
-
-        $fizzBuzz->testMethod();
-
-
-        die;
-        /*
         for ($i = 1; $i <= 200; $i++) {
+
             $multiThree = false;
             $multiFive = false;
 
@@ -48,7 +35,5 @@ class FizzBuzzController extends AbstractController
 
             echo $i . PHP_EOL;
         }
-
-        die;*/
     }
 }
