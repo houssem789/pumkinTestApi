@@ -1,0 +1,25 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+<h1>{{ form_title }}</h1>
+{{ form_start(form_product) }}
+
+<table class="table table-dark">
+    <tbody>
+        <tr>
+            <td>Name</td>
+            <td>{{ form_widget(form_product.name, {'attr': {'autocomplete': 'off'}}) }}</td>
+        </tr>
+        <tr>
+            <td>Price</td>
+            <td>{{ form_widget(form_product.price, {'attr': {'autocomplete': 'off'}}) }}</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>{{ form_widget(form_product.submit, {'attr': {'class': 'btn btn-primary'}}) }}</td>
+        </tr>
+    </tbody>
+</table>
+{{ form_end(form_product) }}
+
+{% endblock %}

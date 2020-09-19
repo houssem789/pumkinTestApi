@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+  </head>
+
+<body>
+{% block body %}
+    <div class="wrapper">
+        <div class="container">
+            <div class="welcome">
+                <h1><small>Bienvenue </small> dans le projet de test Pumpkin !</h1>
+            </div>
+
+            </div>
+        {{ form_start(form) }}
+            <div class="my-custom-class-for-errors">
+                {{ form_errors(form) }}
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    {{ form_row(form.etudiant) }}
+                </div>
+                <div class="col" id="some-custom-id">
+                    {{ form_row(form.module) }}
+                </div>
+                <div class="col" id="some-custom-id">
+                    {{ form_widget(form.save, { 'label': 'Save' }) }}
+                </div>
+            </div>
+        {{ form_end(form) }}
+        <div class="resources">
+
+            <div class="row">
+                <div class="resource">
+                    <h2>
+                        <i class="fa fa-bars"></i> Avant de commencer
+                    </h2>
+                    <p>
+                        Créez une branche nommée <span class="code">{nom}-{prenom}</span>. Vous pusherez votre travail sur cette branche à la fin de l'exercice
+                    </p>
+                    <p class="font-bold"><u>Note</u>:</p>
+                    <ul>
+                        <li><span class="code">composer</span> est installé dans le container, vous pouvez faire <span class="code">make exec</span> pour entrer dans le container</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="resource">
+                    <h2>
+                        <i class="fa fa-cogs"></i> Test 1: Un peu de logique
+                    </h2>
+                    {#{% include "test/test-fizz-buzz.html.twig" %}#}
+                </div>
+            </div>
+            <div class="row">
+                <div class="resource">
+                    <h2>
+                        <i class="fa fa-cogs"></i> Test 2: Un peu d'algorythme
+                    </h2>
+                    {#{% include "test/test-path.html.twig" %}#}
+                </div>
+            </div>
+            <div class="row">
+                <div class="resource">
+                    <h2>
+                        <i class="fa fa-cogs"></i> Test 3: Une petite commande !
+                    </h2>
+                    {#{% include "test/test-command.html.twig" %}#}
+                </div>
+            </div>
+            <div class="row">
+                <div class="resource">
+                    <h2>
+                        <i class="fa fa-cogs"></i> Test 4: Une petite API
+                    </h2>
+                    {#% include "test/test-api.html.twig" %}#}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block javascripts %}<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>{% endblock %}
+</body>
+</html>

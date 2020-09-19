@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ProductController!{% endblock %}
+
+{% block body %}
+
+    {% block content %}
+    {% include 'message.html.twig' %}
+        <h1>Lise des produits</h1>
+    <div style="text-align: right">
+        <p>
+            <a class="btn btn-primary btn-sm" href="{{ path('add_product') }}">Ajouter un produit</a>
+        </p>
+    </div>
+    <table class="table table-dark">
+        <thead>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Action</th>
+        </thead>
+        <tbody>
+        {% for product in products %}
+            <tr>
+                <td>{{ product.id }}</td>
+                <td>{{ product.name }}</td>
+                <td>{{ product.price }}$</td>
+                <td>
+                    <a class="btn btn-primary btn-sm" href="{{ path('modify_product', {'id': product.id}) }}">Modifier</a>
+                    <a class="btn btn-danger btn-sm" href="{{ path('delete_product', {'id': product.id}) }}">Supprimer</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+        
+    {% endblock %}
+    
+{% endblock %}
