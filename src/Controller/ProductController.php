@@ -6,8 +6,10 @@ use App\Entity\Product;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Form\ProductFormType;
+use App\Services\ProductManager;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
+
 
 
 class ProductController extends AbstractController
@@ -26,21 +28,17 @@ class ProductController extends AbstractController
     /**
      * @Route("/add-product", name="add_product")
      */
-    public function addProduct(Request $request): Response
+    public function addProduct(Request $request, ProductManager $productManager): Response
     {
         $product = new Product();
         $form = $this->createForm(ProductFormType::class, $product);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($product);
-            $entityManager->flush();
-            $this->addFlash('success', 'Article Created! Knowledge is power!');
+            $productManager->addProduct($product);
 
             return $this->redirectToRoute("products");
         }
-
 
         return $this->render("product/product-form.html.twig", [
             "form_title" => "Ajouter un produit",
@@ -51,10 +49,10 @@ class ProductController extends AbstractController
     /**
      * @Route("/products", name="products")
      */
-    public function products()
+    public function products(ProductManager $productManagerService)
     {
-        //$products = $this->getDoctrine()->getRepository(Product::class)->findAll();
-        $products = $this->getDoctrine()->getRepository(Product::class)->getProducts();
+        $products = $productManagerService->findAll();
+        //$products = $this->getDoctrine()->getRepository(Product::class)->getProducts();
 
         return $this->render('product/products.html.twig', [
             "products" => $products,
@@ -77,7 +75,7 @@ class ProductController extends AbstractController
     /**
      * @Route("/modify-product/{id}", name="modify_product")
      */
-    public function modifyProduct(Request $request, int $id): Response
+    public function modifyProduct(Request $request, int $id, ProductManager $productManager): Response
     {
         $entityManager = $this->getDoctrine()->getManager();
 
@@ -86,8 +84,7 @@ class ProductController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->flush();
-            $this->addFlash('success', 'Article Updated! Knowledge is power!');
+            $productManager->modifyProduct($product);
 
             return $this->redirectToRoute("products");
         }
@@ -101,13 +98,11 @@ class ProductController extends AbstractController
     /**
      * @Route("/delete-product/{id}", name="delete_product")
      */
-    public function deleteProduct(int $id): Response
+    public function deleteProduct(int $id, ProductManager $productManager): Response
     {
         $entityManager = $this->getDoctrine()->getManager();
         $product = $entityManager->getRepository(Product::class)->find($id);
-        $entityManager->remove($product);
-        $entityManager->flush();
-        $this->addFlash('danger', 'Article Deleted! Knowledge is power!');
+        $productManager->deleteProduct($product);
 
 
         return $this->redirectToRoute("products");

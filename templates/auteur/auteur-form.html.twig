@@ -1,0 +1,25 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+<h1>{{ form_title }}</h1>
+{{ form_start(form_author) }}
+
+<table class="table table-dark">
+    <tbody>
+        <tr>
+            <td>Nom</td>
+            <td>{{ form_widget(form_author.nom, {'attr': {'autocomplete': 'off'}}) }}</td>
+        </tr>
+        <tr>
+            <td>Prenom</td>
+            <td>{{ form_widget(form_author.prenom, {'attr': {'autocomplete': 'off'}}) }}</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>{{ form_widget(form_author.submit, {'attr': {'class': 'btn btn-primary'}}) }}</td>
+        </tr>
+    </tbody>
+</table>
+{{ form_end(form_author) }}
+
+{% endblock %}

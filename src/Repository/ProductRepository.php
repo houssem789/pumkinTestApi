@@ -19,9 +19,19 @@ class ProductRepository extends ServiceEntityRepository
         parent::__construct($registry, Product::class);
     }
 
-    function getProducts()
+    public function getProducts()
     {
         //Get Products
+        return $this
+            ->createQueryBuilder('p')
+            ->select('p')
+            ->getQuery()
+            ->getResult(\Doctrine\ORM\Query::HYDRATE_ARRAY);
+    }
+
+
+    public function findAll()
+    {
         return $this
             ->createQueryBuilder('p')
             ->select('p')
